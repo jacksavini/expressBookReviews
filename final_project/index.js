@@ -15,7 +15,6 @@ app.use("/customer",session({
 
 app.use("/customer/auth/*", function auth(req,res,next){
     const accessToken = req.session.accessToken;
-    console.log(accessToken)
     if(accessToken) {
         try {
             const decoded = jwt.verify(accessToken, 'your_secret_key');

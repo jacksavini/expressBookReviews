@@ -43,7 +43,6 @@ regd_users.put("/auth/review/:isbn", (req, res) => {
   const isbn = req.params.isbn;
   const review = req.query.review;
   const username = req.session.username;
-  console.log(username)
 
   // Check if review and username are provided
   if (!review || !username) {

@@ -22,7 +22,6 @@ function findBook(prop, val) {
   return retBooks; // Book not found
 }
 
-
 public_users.post("/register", (req,res) => {
   const { username, password} = req.body
 
@@ -98,6 +97,9 @@ public_users.get('/title/:title', async function (req, res) {
 // Define the asynchronous version of findBook function
 function findBookAsync(prop, val) {
   return new Promise((resolve, reject) => {
+    if(prop == "isbn"){
+      resolve([books[val]])
+    }
     let retBooks = [];
     for (const key in books) {
       if (books.hasOwnProperty(key)) {
@@ -114,7 +116,7 @@ function findBookAsync(prop, val) {
 // Define the asynchronous version of fetchBooks function
 async function fetchBooks() {
   return new Promise((resolve, reject) => {
-    resolve(JSON.stringify(books, null, 2));
+    resolve(books);
   });
 }
 
